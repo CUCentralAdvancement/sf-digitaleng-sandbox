@@ -1,0 +1,18 @@
+language: node_js
+node_js:
+  - 12
+addons:
+  apt:
+    packages:
+      - libgconf-2-4
+branches:
+  only:
+    - master
+cache:
+  npm: true
+  directories:
+    - "~/.cache"
+install:
+  - yarn
+script:
+  - yarn cy:run --env orgAlias=TRAVIS_BRANCH
