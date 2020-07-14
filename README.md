@@ -73,6 +73,8 @@ git push origin feature/a0R5x000009jAYPEA2
 You then might see a URL in your terminal that takes you to a page where you can make a PR. If not, GitHub will show the most recently pushed branches on the [project's
 homepage](https://github.com/CUCentralAdvancement/sf-digitaleng-sandbox) and provide a link to create a PR.
 
+<img width="800" alt="GitHub Pull Request Link From Command Line" src="https://github.com/CUCentralAdvancement/sf-digitaleng-sandbox/blob/master/docs/images/github-pr-link.png">
+
 ...insert more about CI workflow that will come from writing example below...
 
 ## Example Workflow
