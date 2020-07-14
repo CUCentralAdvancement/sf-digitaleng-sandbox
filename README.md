@@ -81,6 +81,16 @@ homepage](https://github.com/CUCentralAdvancement/sf-digitaleng-sandbox) and pro
 
 To illistrate this workflow, let's consider adding a custom object for a feature request. How would that move from TaskRay on through being deployed to the production environment?
 
+1. Get TaskRay Info - When I inspected my issue I found the ID to be `a0R2E00000LMA9iUAH`.
+1. Create local branch - `git checkout -b feature/a0R2E00000LMA9iUAH`.
+1. Create scratch org to test - `sfdx force:org:create -f config/project-scratch-def.json -a feature/a0R2E00000LMA9iUAH`
+1. Login to scratch org since this issue is best done via UI config - `sfdx force:org:open -u feature/a0R2E00000LMA9iUAH`
+1. Do what I need to do in UI configuration.
+1. Potentially write tests for config change via Cypress.
+1. Pull down changes from scratch org - `sfdx force:source:pull -u feature/a0R2E00000LMA9iUAH`
+1. Commit changes to repo - `git add . && git commit -m"adding order object with needed config"`
+1. Push to GitHub and create PR. `git push --set-upstream origin feature/a0R2E00000LMA9iUAH`
+
 ---
 
 archived...

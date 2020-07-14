@@ -33,3 +33,7 @@ Thumbs.db
 ehthumbs.db
 [Dd]esktop.ini
 $RECYCLE.BIN/
+
+# Cypress
+
+cypress/videos
