@@ -33,4 +33,4 @@ install:
   - yarn
 
 script:
-  - yarn cy:run --env orgAlias=TRAVIS_BRANCH
+  - yarn cy:run --env orgAlias=$TRAVIS_BRANCH
