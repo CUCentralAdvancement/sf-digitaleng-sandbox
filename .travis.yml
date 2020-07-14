@@ -29,6 +29,8 @@ before_install:
   - "./sfdx/install"
   - export PATH=./sfdx/$(pwd):$PATH
   - sfdx --version
+  - sfdx force:org:display -u "feature/a0R2E00000LMA9iUAH" --json
+  - cd cmsksls
 
 install:
   - yarn
