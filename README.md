@@ -6,15 +6,78 @@ This repository can be used for NextGen feature development by the Digital Engag
 
 All work will be tied to issues in TaskRay.
 
+### Get TaskRay Info
+
+To create your feature branch, log in to Salesforce and navigate to the TaskRay issue you are assigned. If you inspect an issue with browser dev tools, you'll be able
+to tell the ID of the issue by finding the CSS ID of the task's `<div>` tag container.
+
+<img width="600" alt="Finding TaskRay Issue ID" src="https://github.com/CUCentralAdvancement/sf-digitaleng-sandbox/blob/master/docs/images/find-taskray-id.png">
+
+You can now link to that specific URL by using a specific URL parameter. Since the ID in this case is `a0R5x000009jAYPEA2`, the link to this particular issue will look
+like: https://cuadvancement.lightning.force.com/apex/TASKRAY__trtaskboard?taskid=a0R5x000009jAYPEA2.
+
+### Create Feature Branch
+
+It is typical to create feature branches with the issue number attached to them. For GitFlow, the branch name will start with "feature" to denote it from a bug, release,
+or hotfix branch. This example will use the TaskRay ID gathered in the previous step.
+
+```bash
+# Create feature branch.
+git checkout -b feature/a0R5x000009jAYPEA2
+
+# Delete local branch if you made a mistake or want to rename.
+git branch -D feature/a0R5x000009jAYPEA2
+```
+
+Now you will do the work needed to complete the issue requirements. Documentation for best practices on how to do that will live elsewhere. Once you are ready to commit
+changes, move onto the next step.
+
+### Working With Scratch Orgs
+
+...
+
+### Adding Tests?
+
+Adding tests can be questionable based on the work you need to do to finish your issue. Salesforce is a closed system and they test their UI and associated features
+internally. Technically, you should only test code you write.
+
+So if you write Apex code, web components, or a React-based Visualforce component, then you definitely should write tests. If you are just creating and moving config
+and metadata around, you might not need to write tests. Automated browser-based tests can go through the same workflow an actual user would go through, but those tests
+are very brittle and can take up more time to maintain than you'll actually spend developing features.
+
+Writing tests will be covered in another document.
+
+### Create Pull Request And Kickoff CI
+
+When you create a PR (pull request) to this GitHub repository, it will kick off a series of automated checks before the PR is approved for manual review. If the automated
+tests fail, then you need to update your code before anyone else will review it.
+
+```bash
+# Look at the files you will be commiting.
+git status
+
+# Add all changed/added code.
+git add .
+
+# Add only files in a path, e.g. Visualforce pages.
+git add force-app/main/default/pages
+
+# Commit staged changes.
+git commit -m"my descriptive commit message"
+
+# Push to GitHub using branch name.
+git push origin feature/a0R5x000009jAYPEA2
+
+```
+
+You then might see a URL in your terminal that takes you to a page where you can make a PR. If not, GitHub will show the most recently pushed branches on the [project's
+homepage](https://github.com/CUCentralAdvancement/sf-digitaleng-sandbox) and provide a link to create a PR.
+
+...insert more about CI workflow that will come from writing example below...
+
 ## Example Workflow
 
 To illistrate this workflow, let's consider adding a custom object for a feature request. How would that move from TaskRay on through being deployed to the production environment?
-
-### Get TaskRay Info
-
-To create your feature branch, log in to Salesforce and navigate to the TaskRay issue you are assigned.
-
-<img width="600" alt="Finding TaskRay Issue ID" src="https://github.com/CUCentralAdvancement/sf-digitaleng-sandbox/blob/master/docs/images/find-taskray-id.png">
 
 ---
 
@@ -24,7 +87,8 @@ This guide helps Salesforce developers who are new to Visual Studio Code go from
 
 ## Part 1: Choosing a Development Model
 
-There are two types of developer processes or models supported in Salesforce Extensions for VS Code and Salesforce CLI. These models are explained below. Each model offers pros and cons and is fully supported.
+There are two types of developer processes or models supported in Salesforce Extensions for VS Code and Salesforce CLI. These models are explained below. Each model
+offers pros and cons and is fully supported.
 
 ### Package Development Model
 
