@@ -4,13 +4,17 @@ This repository can be used for NextGen feature development by the Digital Engag
 
 ## Development Workflow
 
-All work will be tied to issues in Taskray.
+All work will be tied to issues in TaskRay.
 
 ## Example Workflow
 
-To illistrate this workflow, let's consider adding a custom object for a feature request. How would that move from Taskray on through being deployed to the production environment?
+To illistrate this workflow, let's consider adding a custom object for a feature request. How would that move from TaskRay on through being deployed to the production environment?
 
-### Get Taskray Info
+### Get TaskRay Info
+
+To create your feature branch, log in to Salesforce and navigate to the TaskRay issue you are assigned.
+
+<img width="600" alt="Finding TaskRay Issue ID" src="https://github.com/CUCentralAdvancement/sf-digitaleng-sandbox/blob/master/docs/images/find-taskray-id.png">
 
 ---
 
