@@ -1,14 +1,14 @@
-sudo: true
-os: trusty
-cache: false
+# sudo: true
+# os: trusty
+# cache: false
 
-# language: node_js
-# node_js:
-#   - 12
-# addons:
-#   apt:
-#     packages:
-#       - libgconf-2-4
+language: node_js
+node_js:
+  - 12
+addons:
+  apt:
+    packages:
+      - libgconf-2-4
 branches:
   only:
     - master
