@@ -14,11 +14,10 @@ cache:
     - "~/.cache"
 env:
   - URL=https://developer.salesforce.com/media/salesforce-cli/sfdx-linux-amd64.tar.xz
-
+  - ORG=digitaleng
 before_install:
-  # - echo $TRAVIS_PULL_REQUEST_BRANCH
-  # - cd slksjslkj
-  # - openssl aes-256-cbc -K $encrypted_b1fbf710b918_key -iv $encrypted_b1fbf710b918_iv -in assets/server.key.enc -out assets/server.key -d
+  - openssl aes-256-cbc -K $encrypted_79a2f6093848_key -iv $encrypted_79a2f6093848_iv
+    -in assets/server.key.enc -out assets/server.key -d
   - export SFDX_AUTOUPDATE_DISABLE=false
   - export SFDX_USE_GENERIC_UNIX_KEYCHAIN=true
   - export SFDX_DOMAIN_RETRY=300
@@ -29,11 +28,14 @@ before_install:
   - "./sfdx/install"
   - export PATH=./sfdx/$(pwd):$PATH
   - sfdx --version
-  - sfdx force:org:display -u "feature/a0R2E00000LMA9iUAH" --json
-  - cd cmsksls
-
+  - sfdx plugins --core
+  - sfdx force:auth:jwt:grant --clientid $CONSUMERKEY --jwtkeyfile assets/server.key --username $USERNAME --setdefaultdevhubusername -a $ORG
 install:
   - yarn
-
 script:
+  - sfdx force:org:create -v $ORG -s -f config/project-scratch-def.json -a $TRAVIS_PULL_REQUEST_BRANCH --wait 3
+  - sfdx force:org:display -u $TRAVIS_PULL_REQUEST_BRANCH
+  - sfdx force:source:push -u $TRAVIS_PULL_REQUEST_BRANCH
+  # - sfdx force:apex:test:run -u ciorg --wait 10
   - yarn cy:run --env orgAlias=$TRAVIS_PULL_REQUEST_BRANCH
+  - sfdx force:org:delete -u $TRAVIS_PULL_REQUEST_BRANCH -p

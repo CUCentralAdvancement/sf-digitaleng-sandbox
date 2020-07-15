@@ -1,7 +1,7 @@
 describe("DE Order Tests", () => {
   beforeEach(() => {
     cy.exec(
-      `sfdx force:org:display -u "feature/a0R2E00000LMA9iUAH" --json | sed -r "s/[[:cntrl:]][[0-9]{1,3}m//g"`
+      `sfdx force:org:display -u $TRAVIS_PULL_REQUEST_BRANCH --json | sed -r "s/[[:cntrl:]][[0-9]{1,3}m//g"`
     ).then((response) => {
       let result = JSON.parse(response.stdout).result;
       let sessionId = result.accessToken;
