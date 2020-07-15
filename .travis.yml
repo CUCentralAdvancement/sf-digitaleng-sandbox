@@ -21,7 +21,6 @@ env:
 before_install:
   - export ORG=digitaleng
   - echo $ORG
-  # - echo $USERNAME
   - openssl aes-256-cbc -K $encrypted_79a2f6093848_key -iv $encrypted_79a2f6093848_iv
     -in assets/server.key.enc -out assets/server.key -d
   - export SFDX_AUTOUPDATE_DISABLE=false
@@ -36,13 +35,13 @@ before_install:
   - sfdx --version
   - sfdx plugins --core
   - sfdx force:config:list
-  - sfdx force:auth:jwt:grant --clientid $CONSUMERKEY --jwtkeyfile assets/server.key --username alexander.finnarn@cu.edu.digitaleng --setdefaultdevhubusername -a $ORG
+  - sfdx force:auth:jwt:grant -d -a $ORG --clientid $CONSUMERKEY --jwtkeyfile assets/server.key --username $USERNAME
   - sfdx force:org:list --all --verbose
-  - cd skajlkj
+  # - cd skajlkj
 install:
   - yarn
 script:
-  - sfdx force:org:create -v $ORG -s -f config/project-scratch-def.json -a $TRAVIS_PULL_REQUEST_BRANCH --wait 3
+  - sfdx force:org:create -f config/project-scratch-def.json -a $TRAVIS_PULL_REQUEST_BRANCH
   - sfdx force:org:display -u $TRAVIS_PULL_REQUEST_BRANCH
   - sfdx force:source:push -u $TRAVIS_PULL_REQUEST_BRANCH
   # - sfdx force:apex:test:run -u ciorg --wait 10
