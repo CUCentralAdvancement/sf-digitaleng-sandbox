@@ -18,6 +18,7 @@ env:
 before_install:
   - export ORG=digitaleng
   - echo $ORG
+  - echo $USERNAME
   - openssl aes-256-cbc -K $encrypted_79a2f6093848_key -iv $encrypted_79a2f6093848_iv
     -in assets/server.key.enc -out assets/server.key -d
   - export SFDX_AUTOUPDATE_DISABLE=false
@@ -31,7 +32,7 @@ before_install:
   - export PATH=./sfdx/$(pwd):$PATH
   - sfdx --version
   - sfdx plugins --core
-  - sfdx force:auth:jwt:grant --clientid $CONSUMERKEY --jwtkeyfile assets/server.key --username $USERNAME --setdefaultdevhubusername -a $ORG
+  - sfdx force:auth:jwt:grant --clientid $CONSUMERKEY --jwtkeyfile assets/server.key --username alexander.finnarn@cu.edu.digitaleng --setdefaultdevhubusername -a $ORG
 install:
   - yarn
 script:
