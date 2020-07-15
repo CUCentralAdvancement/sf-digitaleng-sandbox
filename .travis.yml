@@ -35,7 +35,8 @@ before_install:
   - export PATH=./sfdx/$(pwd):$PATH
   - sfdx --version
   - sfdx plugins --core
-  - sfdx force:auth:jwt:grant --clientid $CONSUMERKEY --jwtkeyfile assets/server.key --username alexander.finnarn@cu.edu.digitaleng --setdefaultdevhubusername -a $ORG -r https://test.salesforce.com
+  - sfdx force:config:list
+  - sfdx force:auth:jwt:grant --clientid $CONSUMERKEY --jwtkeyfile assets/server.key --username alexander.finnarn@cu.edu.digitaleng --setdefaultdevhubusername -a $ORG
 install:
   - yarn
 script:
