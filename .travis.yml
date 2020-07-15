@@ -37,6 +37,8 @@ before_install:
   - sfdx plugins --core
   - sfdx force:config:list
   - sfdx force:auth:jwt:grant --clientid $CONSUMERKEY --jwtkeyfile assets/server.key --username alexander.finnarn@cu.edu.digitaleng --setdefaultdevhubusername -a $ORG
+  - sfdx force:org:list --all --verbose
+  - cd skajlkj
 install:
   - yarn
 script:
