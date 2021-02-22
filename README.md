@@ -79,7 +79,7 @@ homepage](https://github.com/CUCentralAdvancement/sf-digitaleng-sandbox) and pro
 
 ## Example Workflow
 
-To illistrate this workflow, let's consider adding a custom object for a feature request. How would that move from TaskRay on through being deployed to the production environment?
+To illustrate this workflow, let's consider adding a custom object for a feature request. How would that move from TaskRay on through being deployed to the production environment?
 
 1. Get TaskRay Info - When I inspected my issue I found the ID to be `a0R2E00000LMA9iUAH`.
 1. Create local branch - `git checkout -b feature/a0R2E00000LMA9iUAH`.

@@ -14,14 +14,15 @@
     "prettier": "prettier --write \"**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}\"",
     "prettier:verify": "prettier --list-different \"**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}\"",
     "cy:open": "cypress open",
-    "cy:run": "cypress run --spec 'cypress/integration/**/*'"
+    "cy:run": "cypress run --spec 'cypress/integration/feature/**/*'"
   },
   "devDependencies": {
-    "@prettier/plugin-xml": "^0.7.2",
-    "@salesforce/eslint-config-lwc": "^0.5.0",
-    "@salesforce/sfdx-lwc-jest": "^0.7.1",
-    "cypress": "^4.10.0",
-    "eslint": "^6.8.0",
+    "@prettier/plugin-xml": "^0.13.0",
+    "@salesforce/eslint-config-lwc": "^0.9.0",
+    "@salesforce/sfdx-lwc-jest": "^0.11.0",
+    "cypress": "^6.4.0",
+    "cypress-daywalker": "^0.2.1",
+    "eslint": "^7.19.0",
     "prettier": "^2.0.5",
     "prettier-plugin-apex": "^1.4.0"
   }
