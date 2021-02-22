@@ -1,55 +1,21 @@
 describe("DE Order Tests", () => {
 
   it("Creates a constituent", () => {
-    // cy.visit("https://cuadvancement--uciqa.my.salesforce.com/");
-    // cy.get('input[name="username"]').type("alexander.finnarn@cu.edu.uciqa");;
-    // cy.pause();
-
     cy.exec(
-      `sfdx force:org:display -u uciqa --json | sed -r "s/[[:cntrl:]][[0-9]{1,3}m//g"`
+      `sfdx force:org:display -u $ORG_NAME --json | sed -r "s/[[:cntrl:]][[0-9]{1,3}m//g"`
     ).then((response) => {
       cy.log(JSON.stringify(response));
       let result = JSON.parse(response.stdout).result;
       let sessionId = result.accessToken;
       // let instanceUrl = result.instanceUrl;
-      let instanceUrl = "https://cuadvancement--uciqa.lightning.force.com";
+      let instanceUrl = process.env.INSTANCE_URL;
       // Cypress.config(
       //   "baseUrl",
       //   `${instanceUrl.split(".")[0]}.lightning.force.com`
       // );
       cy.request(`${instanceUrl}/secur/frontdoor.jsp?sid=${sessionId}`);
-      cy.visit(`${instanceUrl}/lightning/page/home`);
+      cy.visit(`${instanceUrl}/lightning/o/Contact/new`);      
 
-      // cy.on("window:before:load", (w) => {
-      //   const script = w.document.createElement("script");
-
-      //   // If you cannot reach your node_modules folder easily (e.g. in a Java application), try to load it via a cdn.
-      //   script.src = 'https://cdn.jsdelivr.net/gh/jaysunsyn/cypress-daywalker@0.2.1/cypress-daywalker.js';
-
-      //   w.document.querySelector("head").appendChild(script);
-      // });
-
-      cy.visit(`${instanceUrl}/lightning/o/Contact/new`);
-      // cy.dwGet('lightning-input[data-field="firstName"]').type("John");
-      // cy.dwGet(
-      //   "records-lwc-detail-panel records-base-record-form records-record-layout-event-broker"
-      // );
-
-      
-
-      // Fill in first name.
-      // cy.get("records-lwc-detail-panel").shadow();
-      //   .find("records-base-record-form").shadow()
-      //   .find("records-record-layout-event-broker").shadow()
-      //   .find('slot').then((sl) => {
-      //     const [dom] = sl.get();
-      //       dom.assignedElements()
-      //       .map((el) => el.shadowRoot)[0]
-      //       .children[0].shadowRoot.children[0].querySelector("slot")
-      //       .children[0].shadowRoot.children[0].shadowRoot.querySelectorAll(
-      //         ".slds-form-element__row"
-      //       );
-      //   });
       cy.get("records-lwc-detail-panel").then((el) => {
         cy.wait(3000);
         cy.document().then((doc) => {
@@ -112,11 +78,8 @@ describe("DE Order Tests", () => {
           cy.wait(3000);
 
           cy.contains('Johnny Depp');
+        });
       });
-});
-
-
-      // cy.pause();
     });
   });
 });
